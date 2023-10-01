@@ -1,6 +1,12 @@
+'use client';
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 export default function Home() {
+const router = useRouter();
+  const handleButtonClick = (href) => {
+    router.push(href);
+  };
+
   return (
     <section className="bg-white">
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -11,18 +17,18 @@ export default function Home() {
           <p className="max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl ">
             Empowering Change, One Report at a Time
           </p>
-          <a
-            href="/user/login"
+          <button
+            onClick={() => handleButtonClick("/user/login")}
             className="inline-flex items-center justify-center px-5 py-3 text-lg font-bold text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100"
           >
             User
-          </a>
-          <a
-            href="/admin/login"
+          </button>
+          <button
+            onClick={() => handleButtonClick("/admin/login")}
             className="ml-4 inline-flex items-center justify-center px-5 py-3 text-lg font-bold text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100"
           >
             Admin
-          </a>
+          </button>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex ">
           <img

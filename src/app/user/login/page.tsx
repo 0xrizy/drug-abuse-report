@@ -3,8 +3,12 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { useSetRecoilState } from 'recoil'; 
+import { isLoggedIn } from "@/atoms/atoms";
 
 export default function LoginPage() {
+  
+const setLoggedIn = useSetRecoilState(isLoggedIn);
   const router = useRouter();
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,6 +25,7 @@ export default function LoginPage() {
       console.log("Login Success! " + response.data);
       console.log(response.data);
       if (response.data.success) {
+        setLoggedIn(true);
         router.push("/user/dashboard");
       } else {
         console.log("Login Failed! " + response.data.error);
@@ -71,12 +76,12 @@ export default function LoginPage() {
       >
         Login
       </button>
-      <Link
-        href="/user/register"
+      <button
+        onClick={() => router.push("/user/register")}
         className="mb-6 text-base text-blue-900 font-normal  lg:text-base sm:px-16 xl:px-48 "
       >
         Not Registered? Go to Register
-      </Link>
+      </button>
     </div>
   );
 }

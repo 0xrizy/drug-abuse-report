@@ -35,7 +35,7 @@ export default function Dashboard() {
     <div className="container mx-auto p-4">
       <h1 className="mb-1 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-6xl">
         <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-          Chat With Out AI Powered Chatbot
+          Chat With Our AI Powered Chatbot
         </span>{" "}
       </h1>
       <p className="text-lg font-normal text-gray-500 lg:text-xl mb-5">
