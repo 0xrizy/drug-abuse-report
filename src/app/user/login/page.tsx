@@ -19,7 +19,12 @@ export default function LoginPage() {
       setLoading(true);
       const response = await axios.post("/api/user/login", user);
       console.log("Login Success! " + response.data);
-      router.push("/user/dashboard");
+      console.log(response.data);
+      if (response.data.success) {
+        router.push("/user/dashboard");
+      } else {
+        console.log("Login Failed! " + response.data.error);
+      }
     } catch (error: any) {
       console.log("Login Failed! " + error.message);
     } finally {
@@ -36,7 +41,7 @@ export default function LoginPage() {
   }, [user]);
 
   return (
-    <div className="flex flex-col items-center  min-h-screen py-2 mt-20">
+    <div className="flex flex-col items-center  min-h-screen py-2 mt-20  ">
       <h1 className="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl ">
         {loading ? "Loading..." : "Login"}
       </h1>
@@ -62,15 +67,15 @@ export default function LoginPage() {
       <button
         onClick={onLogin}
         type="button"
-        className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 "
+        className="py-2.5 px-5 mr-2 mb-2 text-lg font-bold text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 "
       >
         Login
       </button>
       <Link
         href="/user/register"
-        className="mb-6 text-base font-normal text-gray-700 lg:text-base sm:px-16 xl:px-48 "
+        className="mb-6 text-base text-blue-900 font-normal  lg:text-base sm:px-16 xl:px-48 "
       >
-        Go to Register
+        Not Registered? Go to Register
       </Link>
     </div>
   );

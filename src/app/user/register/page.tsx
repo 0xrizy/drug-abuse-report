@@ -17,9 +17,9 @@ export default function SignupPage() {
   const onSignup = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/signup", user);
+      const response = await axios.post("/api/user/register", user);
       console.log("Signup Success! " + response.data);
-      router.push("/login");
+      router.push("/user/login");
     } catch (error: any) {
     } finally {
       setLoading(false);
@@ -76,13 +76,13 @@ export default function SignupPage() {
         type="button"
         className="py-2.5 px-5 mr-2 mb-2 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
       >
-        {buttonDisabled ? "Cant Signup" : "Signup"}
+        {buttonDisabled ? "Enter full details" : "Signup"}
       </button>
       <Link
         href="/user/login"
-        className="mb-6 text-base font-normal text-gray-500 lg:text-base sm:px-16 xl:px-48 "
+        className="mb-6 text-base font-normal text-blue-900 lg:text-base sm:px-16 xl:px-48 "
       >
-        Go to Login
+        Already Registered? Go to Login
       </Link>
     </div>
   );
